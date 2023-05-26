@@ -25,3 +25,9 @@ class TestNode(unittest.TestCase):
         data = stack.pop()
         self.assertEqual(stack.top.data, 'data1')
         self.assertEqual(data, 'data2')
+
+
+    def test___str__(self):
+        stack = Stack()
+        stack.push('data1')
+        self.assertEqual(str(stack), 'data1')
