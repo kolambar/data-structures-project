@@ -44,3 +44,30 @@ class LinkedList:
 
         ll_string += 'None'
         return ll_string
+
+    def to_list(self) -> list:
+        """Возвращает все данные в виде списка"""
+        lst = []
+        lst.append(self.head.data)  # считывает данные из head
+        step = self.head.next_node
+        while step:  # считывает данные дальше
+            lst.append(step.data)
+            step = step.next_node
+        return lst
+
+    def get_data_by_id(self, id):
+        """Ищет блок с указанным id"""
+        if self.head.data['id'] == id:
+            return self.head.data
+        else:
+            step = self.head.next_node
+            while step:
+                # обрабатывает ошибку, если какой-то блок поврежден
+                try:
+                    if step.data['id'] == id:
+                        return step.data
+                    else:
+                        step = step.next_node
+                except TypeError:
+                    print('Данные не являются словарем или в словаре нет id.')
+                    step = step.next_node
